@@ -9,7 +9,7 @@
  *  Name        : Mikrotik bot telegram - php
  *  Function    : Mikortik api
  *  Manufacture : November 2018
- *  Last Edited : 26 Desember 2018
+ *  Last Edited : 25 Juli 2024
  *
  *  Please do not change this code
  *  All damage caused by editing we will not be responsible please think carefully,
@@ -50,9 +50,9 @@ if (!isset($_SESSION["Mikbotamuser"])) {
 		}
 
 		if ($lock_macs == 'enable') {
-			$on_login = ':put (",' . $lock_macs . ',' . $validdity . ',");{:local date [/system clock get date ];:local time [/system clock get time ];:local uptime (' . $validdity . ');:local macadd $"mac-address";:local ipaddresslocal $"address";[/ip hotspot user set mac-address=$"macadd" [find where name=$user]];[/system scheduler add disabled=no interval=$uptime name=$user on-event= "[/ip hotspot active remove [find where user=$user]];[/ip hotspot user remove [find where name=$user]];[/ip hotspot cookie remove [find user=$user]];[/sys sch re [find where name=$user]]" start-date=$date start-time=$time];}}';
+			$on_login = ':put (",' . $lock_macs . ',' . $validdity . ',");{:local date [/system clock get date ];:local time [/system clock get time ];:local uptime (' . $validdity . ');:local macadd $"mac-address";:local ipaddresslocal $"address";[/ip hotspot user set mac-address=$"macadd" [find where name=$user]];[/system scheduler add disabled=no interval=$uptime name=$user on-event= "[/ip hotspot active remove [find where user=$user]];[/ip hotspot user remove [find where name=$user]];[/ip hotspot cookie remove [find user=$user]];[/system scheduler remove [find where name=$user]]" start-date=$date start-time=$time];}}';
 		} else {
-			$on_login = ':put (",' . $lock_macs . ',' . $validdity . ',");{:local date [/system clock get date ];:local time [/system clock get time ];:local uptime (' . $validdity . ');:local macadd $"mac-address";:local ipaddresslocal $"address";[/system scheduler add disabled=no interval=$uptime name=$user on-event= "[/ip hotspot active remove [find where user=$user]];[/ip hotspot user remove [find where name=$user]];[/ip hotspot cookie remove [find user=$user]];[/sys sch re [find where name=$user]]" start-date=$date start-time=$time];}}';
+			$on_login = ':put (",' . $lock_macs . ',' . $validdity . ',");{:local date [/system clock get date ];:local time [/system clock get time ];:local uptime (' . $validdity . ');:local macadd $"mac-address";:local ipaddresslocal $"address";[/system scheduler add disabled=no interval=$uptime name=$user on-event= "[/ip hotspot active remove [find where user=$user]];[/ip hotspot user remove [find where name=$user]];[/ip hotspot cookie remove [find user=$user]];[/system scheduler remove [find where name=$user]]" start-date=$date start-time=$time];}}';
 		}
 
 		if ($validdity != 0) {

@@ -19,14 +19,11 @@ jika gagal login berarti tidak dapat terkoneksi dengan database silahkan teliti 
 
 */
 
-
 require_once 'system.medoo.php';
-        //tidak perlu diedit     jika menggunakan sqlite
-        //jika tidak bisa login silahkan kunjungi mikbotam.net untuk tutorial menghidupkan modul sqlite
-        
+// tidak perlu diedit     jika menggunakan sqlite
+// jika tidak bisa login silahkan kunjungi mikbotam.net untuk tutorial menghidupkan modul sqlite
+
 $mikbotamdata = new medoo([
     'database_type' => 'sqlite',
     'database_file' => '../config/mibotam.db',
 ]);
-
-

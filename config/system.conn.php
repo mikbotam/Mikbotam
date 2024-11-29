@@ -1,5 +1,6 @@
 <?php
-//=====================================================START====================//
+
+// =====================================================START====================//
 
 /*
  *  Base Code   : BangAchil
@@ -16,23 +17,21 @@
  *
  */
 
-//=====================================================START SCRIPT====================//
-	require_once ('system.database.php');
-	$settings=getsettings();
-	global $settings;
-	$identitiy 			=$settings["Nama_router"];
-	$mikrotik_ip 		=$settings["IP_router"];
-	$mikrotik_username=$settings["Username_router"];
-	$mikrotik_password=decrypturl($settings["Pass_router"]);
-	$mikrotik_port 	=$settings["Port"];
-   $dnsname				=$settings["dnsname"];	
-	$Name_router 		=$settings["Nama_router"];
-	$owner 				=$settings["Owner"];
-	$id_own 				=$settings["Id_owner"];
-	$token 				=$settings["Token_bot"];
-	$usernamebot 		=$settings["Username_bot"];
-	$voucher_1			=$settings["Voucher_1"];
-	$Voucher_nonsaldo	=$settings["Voucher_nonsaldo"];
-	$lastupdate       =$settings["Tanggal_diubah"];
-	
-	
+// =====================================================START SCRIPT====================//
+require_once 'system.database.php';
+$settings = getsettings();
+global $settings;
+$identitiy = $settings['Nama_router'];
+$mikrotik_ip = $settings['IP_router'];
+$mikrotik_username = $settings['Username_router'];
+$mikrotik_password = decrypturl($settings['Pass_router']);
+$mikrotik_port = $settings['Port'];
+$dnsname = $settings['dnsname'];
+$Name_router = $settings['Nama_router'];
+$owner = $settings['Owner'];
+$id_own = $settings['Id_owner'];
+$token = $settings['Token_bot'];
+$usernamebot = $settings['Username_bot'];
+$voucher_1 = $settings['Voucher_1'];
+$Voucher_nonsaldo = $settings['Voucher_nonsaldo'];
+$lastupdate = $settings['Tanggal_diubah'];

@@ -1,28 +1,28 @@
-<?php //=====================================================START====================//
+<?php // =====================================================START====================//
 
-    /*
-     *  Base Code   : BangAchil
-     *  Email       : kesumaerlangga@gmail.com
-     *  Telegram    : @bangachil
-     *
-     *  Name        : Mikrotik bot telegram - php
-     *  Function    : Mikortik api
-     *  Manufacture : November 2018
-     *  Last Edited : 26 Desember 2019
-     *
-     *  Please do not change this code
-     *  All damage caused by editing we will not be responsible please think carefully,
-     *
-     */
+/*
+ *  Base Code   : BangAchil
+ *  Email       : kesumaerlangga@gmail.com
+ *  Telegram    : @bangachil
+ *
+ *  Name        : Mikrotik bot telegram - php
+ *  Function    : Mikortik api
+ *  Manufacture : November 2018
+ *  Last Edited : 26 Desember 2019
+ *
+ *  Please do not change this code
+ *  All damage caused by editing we will not be responsible please think carefully,
+ *
+ */
 
-    //=====================================================START SCRIPT====================//
-       session_start();
- error_reporting(0); 
-    if (!isset($_SESSION["Mikbotamuser"])) {
-        header("Location:admin/login.php");
-    }else{
-    	include '../config/system.database.php';
-    }
+// =====================================================START SCRIPT====================//
+session_start();
+error_reporting(0);
+if (!isset($_SESSION['Mikbotamuser'])) {
+    header('Location:admin/login.php');
+} else {
+    include '../config/system.database.php';
+}
 
 ?>
 <div class="sl-pagebody">
@@ -48,7 +48,7 @@
                                     <div class="mail-contnet">
                                          <h5>Mikrotik hotspot bot telegram </h5>
                                  
-                                               <ul>   <li>Version : <?=Version();?>,</li>
+                                               <ul>   <li>Version : <?php echo Version(); ?>,</li>
                                                 <li>Author : BangAcil, <a href="https://mikrotik.com/training/certificates/b101043c12c303053eb3">MTCNA</a></li>
                                                 <li>API Bot telegram Official: <a href="https://core.telegram.org/bots/api">Telegram bot,</a>
                                                 </li>
@@ -57,6 +57,7 @@
                                                 </li>
                                                 <li>Facebook : <a href="https://www.facebook.com/bangachiilll">fb.com/bangachiill</a>
                                                 </li>
+                                                <li>Supported By : HexSorcerer</li>
                                             </ul>
                                           <p>Terima kasih kepada seluruh pendukung mikbotam baik support dan para donatur</p>
                                     </div>

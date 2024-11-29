@@ -1,5 +1,5 @@
 <?php
-//=====================================================START====================//
+// =====================================================START====================//
 
 /*
  *  Base Code   : BangAchil
@@ -16,58 +16,53 @@
  *
  */
 
-//=====================================================START SCRIPT====================//
-    session_start();
-    
+// =====================================================START SCRIPT====================//
+session_start();
 
 error_reporting(0);
-    $getpost = $_POST["Getcaptcha"];
-    $getpin  = $_SESSION["getpin"];
-    include '../config/system.database.php';
-    if (isset($getpost)) {
-        $captch  = $_SESSION["Captcha"];
-        $ses     = $_POST["nilaiCaptcha"];
-        $logname = $_POST["usernameid"];
-        $cek     = login($data);
-        if ($cek != $logname) {
+$getpost = $_POST['Getcaptcha'];
+$getpin = $_SESSION['getpin'];
+include '../config/system.database.php';
+if (isset($getpost)) {
+    $captch = $_SESSION['Captcha'];
+    $ses = $_POST['nilaiCaptcha'];
+    $logname = $_POST['usernameid'];
+    $cek = login($data);
+    if ($cek != $logname) {
+        echo '<script language="javascript">';
+        echo 'document.addEventListener("DOMContentLoaded", function() {';
+        echo 'alertify.alert("Failed", "<img style=\'width:30%\' class=\'responsive-image center\' src=\'../img/loading.svg\' alt=\'error\'><br><center>failed username not found</center>")';
+        echo '});';
+        echo '</script>';
+    } elseif ($captch == $ses) {
+        $send = sendreset($logname);
+        $wel = json_decode($send, true);
+        if ($wel['ok']) {
             echo '<script language="javascript">';
             echo 'document.addEventListener("DOMContentLoaded", function() {';
-            echo 'alertify.alert("Failed", "<img style=\'width:30%\' class=\'responsive-image center\' src=\'../img/loading.svg\' alt=\'error\'><br><center>failed username not found</center>")';
+            echo 'alertify.alert("Successfully sending messages", "<img style=\'width:30%\' class=\'responsive-image center\' src=\'../img/loading.svg\' alt=\'error\'><br><center>Please check your telegram we send PIN Verification</center>").set(\'onok\', function(closeEvent){ window.location.href = "verificationid.php";} );';
             echo '});';
             echo '</script>';
-        } else
-
-        if ($captch == $ses) {
-            $send = sendreset($logname);
-            $wel  = json_decode($send, true);
-            if ($wel['ok']) {
-                echo '<script language="javascript">';
-                echo 'document.addEventListener("DOMContentLoaded", function() {';
-                echo 'alertify.alert("Successfully sending messages", "<img style=\'width:30%\' class=\'responsive-image center\' src=\'../img/loading.svg\' alt=\'error\'><br><center>Please check your telegram we send PIN Verification</center>").set(\'onok\', function(closeEvent){ window.location.href = "verificationid.php";} );';
-                echo '});';
-                echo '</script>';
-                $_SESSION["step1"] = true;
-            } else {
-                echo '<script language="javascript">';
-                echo 'document.addEventListener("DOMContentLoaded", function() {';
-                echo 'alertify.alert("Failed sending messages", "<img style=\'width:30%\' class=\'responsive-image center\' src=\'../img/loading.svg\' alt=\'error\'><br><center>Failed to send PIN verification to your telegram, never stop your bot</center>").set(\'onok\', function(closeEvent){ window.location.href = "login.php";} );';
-                echo '});';
-                echo '</script>';
-            }
-        } elseif (isset($getpost) && empty($ses) && empty($ses)) {
-
-            echo '<script language="javascript">';
-            echo 'document.addEventListener("DOMContentLoaded", function() {';
-            echo 'alertify.alert("Failed", "<img style=\'width:30%\' class=\'responsive-image center\' src=\'../img/loading.svg\' alt=\'error\'><br><center>Please fill in correctly, make sure you have completed the existing data form</center>")';
-            echo '});';
-            echo '</script>';
+            $_SESSION['step1'] = true;
         } else {
-
-            unset($getpost);
+            echo '<script language="javascript">';
+            echo 'document.addEventListener("DOMContentLoaded", function() {';
+            echo 'alertify.alert("Failed sending messages", "<img style=\'width:30%\' class=\'responsive-image center\' src=\'../img/loading.svg\' alt=\'error\'><br><center>Failed to send PIN verification to your telegram, never stop your bot</center>").set(\'onok\', function(closeEvent){ window.location.href = "login.php";} );';
+            echo '});';
+            echo '</script>';
         }
+    } elseif (isset($getpost) && empty($ses) && empty($ses)) {
+        echo '<script language="javascript">';
+        echo 'document.addEventListener("DOMContentLoaded", function() {';
+        echo 'alertify.alert("Failed", "<img style=\'width:30%\' class=\'responsive-image center\' src=\'../img/loading.svg\' alt=\'error\'><br><center>Please fill in correctly, make sure you have completed the existing data form</center>")';
+        echo '});';
+        echo '</script>';
     } else {
         unset($getpost);
     }
+} else {
+    unset($getpost);
+}
 ?>
     <html lang="en">
 
@@ -118,7 +113,6 @@ error_reporting(0);
          <a href="index.php" class="btn btn-success btn-block mg-t-10 lh-10">Close</a>
     </div>';
                 } else {
-
                     echo '<form name="getpin" action="" method="post">
 <div class="login-wrapper  wd-xs-350  pd-20 bg-white border border-success" style="
     border-radius: 7px;
@@ -146,7 +140,7 @@ error_reporting(0);
 
 
       </form>';
-            }?>
+                }?>
         </div>
         <script src="../lib/alert/alertify.min.js"></script>
         <script src="../lib/jquery/jquery.js"></script>
